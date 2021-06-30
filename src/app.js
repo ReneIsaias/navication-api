@@ -4,14 +4,16 @@ const express = require('express');
 const morgan = require('morgan');
 /* Para obtener la informacion del proyecto */
 const pkg = require('../package.json');
+/* Importamos las rutas de grupos */
+const rutas = require('../routes/GruposRutas');
 
 
 /* Nos permite trabajar con mongodb de manera facil y sencilla */
-const mongoose = require('mongoose');
+//const mongoose = require('mongoose');
 /* Nos permite obtener todo lo que nos envia el front en el body */
-const bodyparser = require('body-parser');
+//const bodyparser = require('body-parser');
 /* La configuacion del dotenv(.env) que es el archivo que contiene nuestras configuraciones globales */
-require('dotenv').config()
+require('dotenv').config();
 
 /* Asignamos una instancia de express a una variables */
 const app = express();
@@ -32,6 +34,8 @@ app.get('/', (req, res) => {
         "version": app.get('pkg').version
     });
 });
+
+app.use(rutas);
 
 /* Exportamos app con toda la configuracion */
 module.exports = app;

@@ -5,9 +5,9 @@ router.get('/', (req, res) => {
         error: null,
         data: {
             title: 'Ruta protegida',
-            user: req.user
+            user: req.user,
         }
-    })
-})
+    });
+});
 
-module.exports = router
+module.exports = router;

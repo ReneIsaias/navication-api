@@ -10,6 +10,14 @@ require('dotenv').config()
 /* asignamos un variable para configurar el servidor */
 const app = express();
 
+// cors
+const cors = require('cors');
+var corsOptions = {
+    origin: '*', // Reemplazar con dominio
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+app.use(cors(corsOptions));
+
 /* Configuramos a body para capturar todo lo que venga del body */
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
@@ -45,4 +53,4 @@ app.get('/', (req, res) => {
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
     console.log(`servidor andando en: ${PORT}`)
-})
+});
